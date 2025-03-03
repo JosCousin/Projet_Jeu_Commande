@@ -1,5 +1,5 @@
 import unittest
-from classe import Guerrier, Mage, Voleur
+from personnage.classe import Guerrier, Mage, Voleur
 
 class TestClasses(unittest.TestCase):
     def test_creation_guerrier(self):

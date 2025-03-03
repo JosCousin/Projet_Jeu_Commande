@@ -1,6 +1,6 @@
-from classe import choixClasse, voirStats
-from personnage import choixNom
-from Donjon.salle import creationSalle, Salle
+from personnage.personnage import choixClasse, voirStats
+from personnage.personnage import choixNom
+from Donjon.salle import creationSalle
 
 print("Bienvenue dans le jeu de combat !")
 print("Créez votre personnage :")
@@ -69,6 +69,7 @@ elif action == "O" or action == "o":
 #     print("Vous tournez à gauche.")
 # elif action == "D" or action == "d":
 #     print("Vous tournez à droite.")
+
 elif action == "Q" or action == "q":
     print("Vous avez quitté le jeu.")
 else:
