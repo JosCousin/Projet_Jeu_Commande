@@ -1,12 +1,14 @@
-class monstre():
-    def __init__(self, PV, PM, force, intelligence, defPhysique, defMagique, agilite, chance, endurance, esprit):
-        PV = 10
-        PM = 10
-        force = 1
-        intelligence = 15
-        defPhysique = 5
-        defMagique = 12
-        agilite = 7
-        chance = 6
-        endurance = 5
-        esprit = 10
+class Monstre():
+    def __init__(self):
+        self.nom = "Terrible monstre"
+        self.PV = 10
+        self.PM = 10
+        self.force = 1
+        self.intelligence = 15
+        self.defPhysique = 5
+        self.defMagique = 12
+        self.agilite = 7
+        self.chance = 6
+        self.endurance = 5
+        self.esprit = 10
+        

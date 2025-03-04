@@ -1,11 +1,30 @@
 import unittest
+from unittest.mock import patch
 from Personnage.Guerrier import Guerrier
 from Personnage.Mage import Mage
 from Personnage.Voleur import Voleur
+from Personnage.personnage import choixNom
 
 class TestClasses(unittest.TestCase):
+
+    @patch('builtins.input', return_value='TestNom')
+    def test_choix_nom_Valid(self, mock_input):
+        nom = choixNom()
+        self.assertTrue(len(nom) <= 10)
+        self.assertTrue(len(nom) >= 3)
+
+    @patch('builtins.input', side_effect=["T", "TestNom"])
+    def test_choix_nom_Court(self, mock_input):
+        nom = choixNom()
+        self.assertFalse(len(nom) >= 3)
+
+    @patch('builtins.input', side_effect=["UnNomQuiEstBeaucoupTropLong", "TestNom"])
+    def test_choix_nom(self, mock_input):
+        nom = choixNom()
+        self.assertFalse(len(nom) <= 10)
+
     def test_creation_guerrier(self):
-        guerrier = Guerrier("GuerrierTest", 0, 0)
+        guerrier = Guerrier("GuerrierTest")
         self.assertEqual(guerrier.nom, "GuerrierTest")
         self.assertEqual(guerrier.PV, 150)
         self.assertEqual(guerrier.PM, 50)
@@ -17,10 +36,10 @@ class TestClasses(unittest.TestCase):
         self.assertEqual(guerrier.chance, 5)
         self.assertEqual(guerrier.endurance, 10)
         self.assertEqual(guerrier.esprit, 4)
-        self.assertEqual(guerrier.classe, "guerrier")
+        self.assertEqual(guerrier.classe, "Guerrier")
 
     def test_creation_mage(self):
-        mage = Mage("MageTest", 0, 0)
+        mage = Mage("MageTest")
         self.assertEqual(mage.nom, "MageTest")
         self.assertEqual(mage.PV, 90)
         self.assertEqual(mage.PM, 150)
@@ -32,10 +51,10 @@ class TestClasses(unittest.TestCase):
         self.assertEqual(mage.chance, 6)
         self.assertEqual(mage.endurance, 5)
         self.assertEqual(mage.esprit, 10)
-        self.assertEqual(mage.classe, "mage")
+        self.assertEqual(mage.classe, "Mage")
 
     def test_creation_voleur(self):
-        voleur = Voleur("VoleurTest", 0, 0)
+        voleur = Voleur("VoleurTest")
         self.assertEqual(voleur.nom, "VoleurTest")
         self.assertEqual(voleur.PV, 110)
         self.assertEqual(voleur.PM, 70)
@@ -47,7 +66,7 @@ class TestClasses(unittest.TestCase):
         self.assertEqual(voleur.chance, 12)
         self.assertEqual(voleur.endurance, 7)
         self.assertEqual(voleur.esprit, 6)
-        self.assertEqual(voleur.classe, "voleur")
+        self.assertEqual(voleur.classe, "Voleur")
 
 if __name__ == "__main__":
     unittest.main()
