@@ -1,4 +1,4 @@
-from personnage import Personnage
+from .personnage import Personnage
 
 class Voleur(Personnage):
     def __init__(self, nom):
@@ -12,4 +12,4 @@ class Voleur(Personnage):
         chance = 12
         endurance = 7
         esprit = 6
-        super().__init__(nom, PV, PM, force, intelligence, defPhysique, defMagique, agilite, chance, endurance, esprit, "voleur")
+        super().__init__(nom, PV, PM, force, intelligence, defPhysique, defMagique, agilite, chance, endurance, esprit, "Voleur")

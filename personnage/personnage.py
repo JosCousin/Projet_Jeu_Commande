@@ -1,7 +1,3 @@
-from Guerrier import Guerrier
-from Mage import Mage
-from Voleur import Voleur
-
 class Personnage:
     def __init__(self, nom, PV, PM, force, intelligence, defPhysique, defMagique, agilite, chance, endurance, esprit, classe):
         self.nom = nom
@@ -29,35 +25,44 @@ def choixNom():
         choixNom()
     return nom
 
-
-def choixClasse():
+def choixClasse(nom):
+    from Personnage.Guerrier import Guerrier
+    from Personnage.Mage import Mage
+    from Personnage.Voleur import Voleur
     print("Choisissez votre classe :")
     print("1. Guerrier")
     print("2. Mage")
     print("3. Voleur")
     choix = input("Entrez le numéro de la classe choisie : ")
     if choix == "1":
-        return Guerrier
+        return Guerrier(nom)
     elif choix == "2":
-        return Mage
+        return Mage(nom)
     elif choix == "3":
-        return Voleur
+        return Voleur(nom)
     else:
         print("Classe invalide, recommencez.")
         choixClasse()
 
 def voirStats(personnage):
-    print("Votre personnage est un", personnage.classe, "nommé", personnage.nom)
-    print("Voici les stats :")
-    print("Points de Vie :", personnage.PV)
-    print("Points de Mana :", personnage.PM)
-    print("Force :", personnage.force)
-    print("Intelligence :", personnage.intelligence)
-    print("Défense Physique :", personnage.defPhysique)
-    print("Défense Magique :", personnage.defMagique)
-    print("Agilité :", personnage.agilite)
-    print("Chance :", personnage.chance)
-    print("Endurance :", personnage.endurance)
-    print("Esprit :", personnage.esprit)
-    print("Position :", personnage.coordX, ",", personnage.coordY)
+    print("Voulez-vous voir les stats de votre personnage ?")
+    choix = input("Oui/Non : ")
+    if choix == "Oui" or choix == "oui" or choix == "O" or choix == "o":
+        print("Très bien, bonne aventure !")
+        print("Nom :", personnage.nom, "Classe :", personnage.classe)
+        print("Voici les stats :")
+        print("Points de Vie :", personnage.PV)
+        print("Points de Mana :", personnage.PM)
+        print("Force :", personnage.force)
+        print("Intelligence :", personnage.intelligence)
+        print("Défense Physique :", personnage.defPhysique)
+        print("Défense Magique :", personnage.defMagique)
+        print("Agilité :", personnage.agilite)
+        print("Chance :", personnage.chance)
+        print("Endurance :", personnage.endurance)
+        print("Esprit :", personnage.esprit)
+        print("Position :", personnage.coordX, ",", personnage.coordY)
+    else:
+        print("Très bien, bonne aventure !")
+    
 
