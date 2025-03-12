@@ -1,46 +1,36 @@
-from Personnage.personnage import choixClasse, voirStats
-from Personnage.personnage import choixNom
-from Donjon.grille import creationGrille
-from Donjon.donjon import creationDonjon
-from Donjon.deplacement import deplacement
-
+from Personnage.ChoixNom import *
+from Personnage.ChoixClasse import *
+from Personnage.VoirStat import *
+from Donjon.grille import *
+from Donjon.deplacement import *
+from Donjon.VerifTypeSalle import *
 print("Bienvenue dans le jeu de combat !")
 print("Créez votre personnage :")
 
+choixNom = ChoixNom()
+choixClasse = ChoixClasse()
+voirStats = VoirStat()
+
 # -------------------Choix du Nom------------------ #
 
-nom = choixNom()
+nom = choixNom.choixNom()
 
 # -------------------Choix de la Classe------------------ #
 
-personnage = choixClasse(nom)
+personnage = choixClasse.choixClasse(nom)
 
 # -------------------Affichage des Stats------------------ #
-voirStats(personnage)
+voirStats.voirStats(personnage)
 
 # -------------------Début de l'Aventure------------------ #
 
 print("Chargement de la carte...")
 
-donjon = creationDonjon()
-print("Donjon créé !")
-print("Nombre de grilles : ", donjon.nbGrilles)
+donjon = creationGrille()
 print("Liste des grilles : ")
-for grille in donjon.grilles:
-    print("Grille en position (", grille.grilleX, ", ", grille.grilleY, ")")
+for salle in donjon.listeSalle:
+    print(salle.coordX, salle.coordY, salle.typeSalle)
 print("Grilles chargées !")
-grille = donjon.grilles[0]
-for salle in grille.listeSalle:
-    print("Salle en position (", salle.coordX, ", ", salle.coordY, "), de type ", salle.typeSalle)
-
-
-
-# listeSalles = creationGrille()
-# print("Liste des salles créée !")
-# for salle in listeSalles:
-#     print("Salle en position (", salle.coordX, ", ", salle.coordY, "), de type ", salle.typeSalle)
-# print("Carte chargée !")
-
 
 print("Vous êtes actuellement en position (0, 0).")
 print("Vous pouvez vous déplacer en tapant les commandes suivantes :")
@@ -59,8 +49,15 @@ print("Vous êtes actuellement dans la salle (0, 0).")
 print("Vous êtes en direction du Nord.")
 print("Quelle action voulez-vous effectuer ?")
 
-deplacement(personnage, grille.listeSalle)
+deplacement = Deplacement(personnage, donjon)
 
-
-
-
+while True:
+    nouvelle_grille = deplacement.deplacement()
+    
+    if nouvelle_grille is not None:
+        donjon = nouvelle_grille
+        deplacement = Deplacement(personnage, donjon)
+        print("Nouvelle grille générée !")
+        for salle in donjon.listeSalle:
+            print(salle.coordX, salle.coordY, salle.typeSalle)
+        print("Grilles chargées !")

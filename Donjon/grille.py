@@ -2,19 +2,18 @@ import random
 from .salle import Salle
 
 class Grille:
-    def __init__(self, grilleX, grilleY):
-        self.grilleX = grilleX
-        self.grilleY = grilleY
+    def __init__(self):
         self.listeSalle = []
-        self.listePorte = []
-        
 
-def creationGrille(grilleX, grilleY):
-    grille = Grille(grilleX, grilleY)
-    nbSalle = 9
+def creationGrille():
+    grille = Grille()
+    
 
-    for x in range(-1, 2):
-        for y in range(-1, 2):
-            type = random.randint(1, 3)
+    for x in range(-2, 3):
+        for y in range(-2, 3):
+            type = random.randint(1, 4)
             grille.listeSalle.append(Salle(x, y, type)) 
+
+    random.choice(grille.listeSalle).typeSalle = 5
+    grille.listeSalle[4].typeSalle = 1
     return grille
