@@ -1,8 +1,8 @@
-from Donjon.VerifCoordonnnees import VerifCoordonnees
+from Deplacement.VerifCoordonnnees import VerifCoordonnees
 
 class Deplacement:
     def __init__(self, personnage, donjon):
-        self.personnage = personnage
+        self.personnage = personnage.stats
         self.listeSalles = donjon.listeSalle
 
     def deplacement(self):
@@ -20,7 +20,7 @@ class Deplacement:
             self.personnage.coordX -= 1
         elif action == "q":
             print("Vous avez quitté le jeu.")
-            return
+            exit()
         else:
             print("Commande invalide. Veuillez réessayer.")
             self.deplacement() 
