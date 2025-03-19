@@ -1,9 +1,6 @@
 import unittest
 from unittest.mock import patch
-from Personnage.Guerrier import Guerrier
-from Personnage.Mage import Mage
-from Personnage.Voleur import Voleur
-from Personnage.personnage import choixNom
+from Personnage.Personnage import choixNom
 
 class TestClasses(unittest.TestCase):
 

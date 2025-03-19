@@ -1,5 +1,5 @@
 import random
-from .monstre import Monstre
+from .Monstre import Monstre
 
 class Salle:
     def __init__(self, coordX, coordY, typeSalle):

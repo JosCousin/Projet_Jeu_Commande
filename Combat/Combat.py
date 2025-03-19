@@ -1,4 +1,4 @@
-from .monstre import Monstre
+from Donjon.Monstre import Monstre
 
 
 monstre = Monstre()

@@ -1,4 +1,14 @@
+from Prompt.ConsoleUI import ConsoleUI
+from Personnage.ChoixNom import ChoixNom
+from Personnage.ChoixClasse import ChoixClasse
+from Personnage.VoirStat import VoirStat
 from Jeu.Jeu import Jeu
 
-jeu = Jeu()
-jeu.start() 
+ui = ConsoleUI()
+
+choixNom = ChoixNom(ui)
+choixClasse = ChoixClasse(ui)
+voirStats = VoirStat(ui)
+
+jeu = Jeu(choixNom, choixClasse, voirStats, ui)
+jeu.start()

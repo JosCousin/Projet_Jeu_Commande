@@ -1,36 +1,26 @@
-from Donjon.grille import creationGrille
+from Donjon.Grille import creationGrille
+from Deplacement.SalleEventHandler import SalleEventHandler
 
 class VerifTypeSalle:
-    def __init__(self):
-        pass
+    def __init__(self, ui):
+        self.ui = ui
+        self.eventHandler = SalleEventHandler(ui)
 
-    @staticmethod
-    def verifTypeSalle(personnage, listeSalles, original_x, original_y):
-        from Donjon.combat import combat
-
+    def verifTypeSalle(self, personnage, listeSalles, original_x, original_y):
         for salle in listeSalles:
             if salle.coordX == personnage.coordX and salle.coordY == personnage.coordY:
                 if salle.typeSalle == 1:
-                    print("Vous êtes dans une salle vide.")
+                    self.eventHandler.onSalleVide(personnage)
                 elif salle.typeSalle == 2:
-                    print("Vous êtes dans une salle avec un monstre.")
-                    combat(personnage)
-                    salle.typeSalle = 1
+                    self.eventHandler.onMonstre(personnage, salle)
                 elif salle.typeSalle == 3:
-                    print("Vous êtes dans une salle avec un trésor.")
+                    self.eventHandler.onTresor(personnage)
                 elif salle.typeSalle == 4:
-                    print("Il y a un mur, vous ne pouvez pas y aller.")
-                    personnage.coordX, personnage.coordY = original_x, original_y
+                    self.eventHandler.onMur(personnage, original_x, original_y)
                 elif salle.typeSalle == 5:
-                    print("Vous avez trouvé une porte, continuer ? (Oui/Non).")
-                    choix = input().lower()
-                    if choix == "non":
-                        print("Vous avez quitté le jeu.")
-                    elif choix == "oui":
-                        print("Vous changez de grille !")
-                        personnage.coordX = 0
-                        personnage.coordY = 0
-                        return creationGrille()
+                    newGrille = self.eventHandler.onPorte(personnage)
+                    if newGrille is not None:
+                        return newGrille
                 break
-        
+
         return None

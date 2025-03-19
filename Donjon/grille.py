@@ -1,5 +1,5 @@
 import random
-from .salle import Salle
+from Donjon.Salle import Salle
 
 class Grille:
     def __init__(self):

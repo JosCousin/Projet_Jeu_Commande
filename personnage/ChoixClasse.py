@@ -1,18 +1,23 @@
+from Personnage.Classes import Classe
 
-from Personnage.classes import Classe
-
-
-class ChoixClasse :
-    def __init__(self):
-        pass
+class ChoixClasse:
+    def __init__(self, ui, options=None):
+        self.ui = ui
+        self.options = options or {
+            1: Classe.Guerrier,
+            2: Classe.Mage,
+            3: Classe.Voleur
+        }
 
     def choixClasse(self):
-        
-        print("Choisissez votre classe :")
-        print("1. Guerrier")
-        print("2. Mage")
-        print("3. Voleur")
-        choix = input("Entrez le numéro de la classe choisie : ")
-        for classe in Classe:
-            if classe.value[0] == int(choix):
-                return classe.value[1]
+        while True:
+            self.ui.display("Choisissez votre classe :")
+            for num, classe in self.options.items():
+                self.ui.display(f"{num}. {classe.name}")
+            try:
+                choix = int(self.ui.get_input("Entrez le numéro de la classe choisie : "))
+                if choix in self.options:
+                    return self.options[choix].value[1]
+            except ValueError:
+                pass
+            self.ui.display("Choix invalide. Veuillez réessayer.")

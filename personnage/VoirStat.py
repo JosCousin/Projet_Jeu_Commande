@@ -1,26 +1,24 @@
 class VoirStat:
-    def __init__(self):
-        pass
+    def __init__(self, ui):
+        self.ui = ui
 
-    @staticmethod
-    def voirStats(personnage):
-        print("Voulez-vous voir les stats de votre personnage ?")
-        choix = input("Oui/Non : ")
-        if choix == "Oui" or choix == "oui" or choix == "O" or choix == "o":
-            print("Nom :", personnage.nom)
-            print("Voici les stats :")
-            print("Points de Vie :", personnage.stats.PV)
-            print("Points de Mana :", personnage.stats.PM)
-            print("Force :", personnage.stats.force)
-            print("Intelligence :", personnage.stats.intelligence)
-            print("Défense Physique :", personnage.stats.defPhysique)
-            print("Défense Magique :", personnage.stats.defMagique)
-            print("Agilité :", personnage.stats.agilite)
-            print("Chance :", personnage.stats.chance)
-            print("Endurance :", personnage.stats.endurance)
-            print("Esprit :", personnage.stats.esprit)
-            print("Position :", personnage.stats.coordX, ",", personnage.stats.coordY)
-            print("Très bien, bonne aventure !")
-
+    def voirStats(self, personnage):
+        self.ui.display("Voulez-vous voir les stats de votre personnage ?")
+        choix = self.ui.get_input("Oui/Non : ")
+        if choix.lower() in ["oui", "o"]:
+            self.ui.display("Nom : " + personnage.nom)
+            self.ui.display("Voici les stats :")
+            self.ui.display("Points de Vie : " + str(personnage.stats.PV))
+            self.ui.display("Points de Mana : " + str(personnage.stats.PM))
+            self.ui.display("Force : " + str(personnage.stats.force))
+            self.ui.display("Intelligence : " + str(personnage.stats.intelligence))
+            self.ui.display("Défense Physique : " + str(personnage.stats.defPhysique))
+            self.ui.display("Défense Magique : " + str(personnage.stats.defMagique))
+            self.ui.display("Agilité : " + str(personnage.stats.agilite))
+            self.ui.display("Chance : " + str(personnage.stats.chance))
+            self.ui.display("Endurance : " + str(personnage.stats.endurance))
+            self.ui.display("Esprit : " + str(personnage.stats.esprit))
+            self.ui.display("Position : " + str(personnage.stats.coordX) + ", " + str(personnage.stats.coordY))
+            self.ui.display("Très bien, bonne aventure !")
         else:
-            print("Très bien, bonne aventure !")
+            self.ui.display("Très bien, bonne aventure !")
