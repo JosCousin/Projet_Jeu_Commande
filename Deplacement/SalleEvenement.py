@@ -1,7 +1,7 @@
 from Donjon.Grille import creationGrille
 from Combat.CombatEngine import CombatEngine
 
-class SalleEventHandler:
+class SalleEvenement:
     def __init__(self, ui):
         self.ui = ui
 

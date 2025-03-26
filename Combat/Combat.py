@@ -1,8 +1,9 @@
 from Donjon.Monstre import Monstre
 
 
-monstre = Monstre()
 def combat(personnage):
+    monstre = Monstre()
+
     print(f"Vous êtes attaqué par un {monstre.nom} !")
     print(f"Le {monstre.nom} a {monstre.PV} points de vie.")
     print("Vous pouvez attaquer le monstre en tapant 'A' ou fuir en tapant 'F' mais vous perdrez 15 PV.")

@@ -1,5 +1,6 @@
 class Stats:
-    def __init__(self, PV, PM, force, intelligence, defPhysique, defMagique, agilite, chance, endurance, esprit, coordX, coordY):
+    def __init__(self,ClassName, PV, PM, force, intelligence, defPhysique, defMagique, agilite, chance, endurance, esprit, coordX, coordY):
+        self.ClassName = ClassName
         self.PV = PV
         self.PM = PM
         self.force = force

@@ -1,24 +1,24 @@
 from Donjon.Grille import creationGrille
-from Deplacement.SalleEventHandler import SalleEventHandler
+from Deplacement.SalleEvenement import SalleEvenement
 
 class VerifTypeSalle:
     def __init__(self, ui):
         self.ui = ui
-        self.eventHandler = SalleEventHandler(ui)
+        self.evenement = SalleEvenement(ui)
 
     def verifTypeSalle(self, personnage, listeSalles, original_x, original_y):
         for salle in listeSalles:
             if salle.coordX == personnage.coordX and salle.coordY == personnage.coordY:
                 if salle.typeSalle == 1:
-                    self.eventHandler.onSalleVide(personnage)
+                    self.evenement.onSalleVide(personnage)
                 elif salle.typeSalle == 2:
-                    self.eventHandler.onMonstre(personnage, salle)
+                    self.evenement.onMonstre(personnage, salle)
                 elif salle.typeSalle == 3:
-                    self.eventHandler.onTresor(personnage)
+                    self.evenement.onTresor(personnage)
                 elif salle.typeSalle == 4:
-                    self.eventHandler.onMur(personnage, original_x, original_y)
+                    self.evenement.onMur(personnage, original_x, original_y)
                 elif salle.typeSalle == 5:
-                    newGrille = self.eventHandler.onPorte(personnage)
+                    newGrille = self.evenement.onPorte(personnage)
                     if newGrille is not None:
                         return newGrille
                 break

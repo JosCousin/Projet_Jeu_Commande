@@ -1,11 +1,10 @@
 class VoirStat:
-    def __init__(self, ui):
+    def __init__(self, ui, decision):
         self.ui = ui
+        self.decisionHelper = decision
 
     def voirStats(self, personnage):
-        self.ui.display("Voulez-vous voir les stats de votre personnage ?")
-        choix = self.ui.get_input("Oui/Non : ")
-        if choix.lower() in ["oui", "o"]:
+        if self.decisionHelper.demandeVoirStats():
             self.ui.display("Nom : " + personnage.nom)
             self.ui.display("Voici les stats :")
             self.ui.display("Points de Vie : " + str(personnage.stats.PV))
