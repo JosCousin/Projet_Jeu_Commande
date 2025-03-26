@@ -13,8 +13,8 @@ def combat(personnage):
     action_input = input("Choisissez une action : ").upper()
     if action_input in Action.__members__:
         action_class = Action[action_input].value
-        action_instance = action_class(personnage, monstre)
-        action_instance.execute()
+        action = action_class(personnage, monstre)
+        action.execute()
         if monstre.PV > 0 and personnage.PV > 0:
             combat(personnage)
     else:

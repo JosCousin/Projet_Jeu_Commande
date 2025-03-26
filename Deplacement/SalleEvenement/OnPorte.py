@@ -4,7 +4,7 @@ class OnPorte:
     def __init__(self, ui):
         self.ui = ui
 
-    def onPorte(self, personnage):
+    def action(self, personnage, salle, original_x, original_y):
             self.ui.display("Vous avez trouvé une porte, continuer ? (Oui/Non).")
             choix = self.ui.get_input("Votre choix : ").lower()
             if choix == "non":

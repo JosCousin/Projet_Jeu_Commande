@@ -3,5 +3,5 @@ class OnTresor:
         self.ui = ui
 
 
-    def onTresor(self):
+    def action(self, personnage, salle, original_x, original_y):
         self.ui.display("Vous êtes dans une salle avec un trésor.")

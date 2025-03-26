@@ -2,5 +2,5 @@ class OnSalleVide:
     def __init__(self, ui):
         self.ui = ui
 
-    def onSalleVide(self):
+    def action(self, personnage, salle, original_x, original_y):
         self.ui.display("Vous êtes dans une salle vide.")
