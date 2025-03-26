@@ -17,16 +17,28 @@ class Jeu:
         self.creationPersonnage = CreationPersonnage(self.choixNom, self.choixClasse, self.ui)
 
     def start(self):
+        self.afficher_bienvenue()
+        personnage = self.creer_personnage()
+        self.afficher_stats_personnage(personnage)
+        donjon = self.charger_donjon()
+        self.gestion_deplacement(personnage, donjon)
+
+    def afficher_bienvenue(self):
         self.ui.display("Bienvenue dans le jeu de combat !")
-        
-        personnage = self.creationPersonnage.creer_personnage()
-        
+
+    def creer_personnage(self):
+        return self.creationPersonnage.creer_personnage()
+
+    def afficher_stats_personnage(self, personnage):
         self.voirStats.voirStats(personnage)
-    
+
+    def charger_donjon(self):
         self.ui.display("Chargement de la carte...")
         donjon = creationGrille()
         self.ui.display("Grilles chargées !")
-    
+        return donjon
+
+    def gestion_deplacement(self, personnage, donjon):
         deplacement = Deplacement(personnage, donjon, self.ui)
         while True:
             nouvelle_grille = deplacement.deplacement()
