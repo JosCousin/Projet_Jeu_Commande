@@ -15,7 +15,7 @@ class Jeu:
         self.decisionVoirStat = Decision(self.ui)
         self.voirStats = VoirStat(self.ui, self.decisionVoirStat)
         self.creationPersonnage = CreationPersonnage(self.choixNom, self.choixClasse, self.ui)
-
+        
     def start(self):
         self.afficher_bienvenue()
         personnage = self.creer_personnage()

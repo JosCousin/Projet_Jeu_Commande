@@ -3,7 +3,7 @@ from Deplacement.Direction import Direction
 
 class Deplacement:
     def __init__(self, personnage, donjon, ui):
-        self.personnage = personnage.stats
+        self.personnage = personnage._stats
         self.listeSalles = donjon.listeSalle
         self.ui = ui
         self.validator = ValidationMouvement(ui)
@@ -30,7 +30,7 @@ class Deplacement:
 
     def effectuer_deplacement(self, action, mouvements):
         original_x, original_y = self.personnage.coordX, self.personnage.coordY
-        mouvements[action].move(self.personnage)
+        self.MAJ_coordinates(mouvements[action])
 
         valide, nouvelle_grille = self.validator.validate(
             self.personnage, self.listeSalles, original_x, original_y
@@ -40,3 +40,6 @@ class Deplacement:
             return nouvelle_grille
         elif not valide:
             return self.deplacement()
+
+    def MAJ_coordinates(self, mouvement):
+        mouvement.move(self.personnage)

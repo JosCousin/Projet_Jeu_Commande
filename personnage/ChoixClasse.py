@@ -3,11 +3,7 @@ from Personnage.Classes import Classe
 class ChoixClasse:
     def __init__(self, ui):
         self.ui = ui
-        self.options = {
-            1: Classe.Guerrier,
-            2: Classe.Mage,
-            3: Classe.Voleur
-        }
+        self.options = {classe.value[0]: classe for classe in Classe}
 
     def choixClasse(self):
         while True:
@@ -17,7 +13,7 @@ class ChoixClasse:
             try:
                 choix = int(self.ui.get_input("Entrez le numéro de la classe choisie : "))
                 if choix in self.options:
-                    return self.options[choix].value[1]
+                    return self.options[choix]
             except ValueError:
                 pass
             self.ui.display("Choix invalide. Veuillez réessayer.")

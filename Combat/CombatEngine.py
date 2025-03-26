@@ -8,4 +8,4 @@ class CombatEngine:
         self.ui.display("Début du combat contre un monstre !")
         combat(personnage)
         salle.typeSalle = 1
-        self.ui.display("Combat terminé. Le monstre est vaincu.")
+        
