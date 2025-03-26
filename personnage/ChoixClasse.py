@@ -1,9 +1,9 @@
 from Personnage.Classes import Classe
 
 class ChoixClasse:
-    def __init__(self, ui, options=None):
+    def __init__(self, ui):
         self.ui = ui
-        self.options = options or {
+        self.options = {
             1: Classe.Guerrier,
             2: Classe.Mage,
             3: Classe.Voleur
