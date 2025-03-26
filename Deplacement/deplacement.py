@@ -29,7 +29,6 @@ class Deplacement:
             print("Commande invalide. Veuillez réessayer.")
             return self.deplacement()
 
-        # Passage de self.ui afin que VerifCoordonnees ait accès à l'interface utilisateur.
         valide, nouvelle_grille = VerifCoordonnees.verifCoordonnees(
             self.personnage, self.listeSalles, original_x, original_y, self.ui
         )
